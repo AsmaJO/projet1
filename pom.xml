@@ -59,10 +59,10 @@
         </dependency>
 
     </dependencies>
-
     <build>
-        <plugins>
-            <!-- plugin to run App.java -->
+
+        <!--<plugins>
+            &lt;!&ndash; plugin to run App.java &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -79,7 +79,7 @@
                     <mainClass>org.fitec.App</mainClass>
                 </configuration>
             </plugin>
-        </plugins>
+        </plugins>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -131,5 +131,33 @@
 
             </plugins>
         </pluginManagement>
+
     </build>
+    <!-- PROFILES -->
+    <profiles>
+        <profile>
+           <id>exec-APP</id>
+            <build>
+                <plugins>
+                    <!-- plugin to run App.java -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <mainClass>org.fitec.App</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
